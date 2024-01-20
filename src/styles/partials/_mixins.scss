@@ -1,0 +1,24 @@
+@use "./variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin text-style($size, $line-height, $weight) {
+    font-size: $size;
+    line-height: $line-height;
+    font-weight: $weight;
+  }
+
+@mixin set-flex($flex-direction: row){
+    display:flex;
+    flex-direction: $flex-direction;
+}

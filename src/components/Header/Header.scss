@@ -1,0 +1,50 @@
+@use "../../styles/partials/reset" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-color: $white;
+
+  &__content {
+    margin: 1rem;
+    @include set-flex(column);
+    gap: 1rem;
+  }
+
+  //   &__search-avatar-wrapper {
+  //   }
+
+  &__form {
+    @include set-flex(column);
+    gap: 1rem;
+  }
+
+  &__logo {
+    width: 7.5rem;
+    height: 1.563rem;
+
+    // &-wrapper{
+
+    // }
+  }
+
+  &__avatar {
+    &-mobile {
+      @include tablet {
+        display: none;
+      }
+    }
+    &-tablet{
+        display: none;
+    }
+    &-img {
+      border-radius: 50%;
+      width: 2.25rem;
+      height: 2.25rem;
+      @include tablet {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
