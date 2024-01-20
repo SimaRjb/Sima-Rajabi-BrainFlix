@@ -1,0 +1,10 @@
+@use "../../styles/partials/reset" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main-video{
+    // background-color: $brainflix-dark-black;
+    &__featured{
+        width: 100%;
+    }
+}
