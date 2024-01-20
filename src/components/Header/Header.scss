@@ -1,10 +1,11 @@
 @use "../../styles/partials/reset" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
 
 .header {
   background-color: $white;
-
+  font-family: AvenirNextLTPro;
   &__content {
     margin: 1rem;
     box-sizing: border-box;

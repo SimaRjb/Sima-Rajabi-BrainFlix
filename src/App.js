@@ -7,9 +7,11 @@ import Comments from './components/Comments/Comments';
 function App() {
   return (
     <div className="App">
+      <body>
       <Header/>
     <MainVideo/>
     <Comments/>
+    </body>
     </div>
   );
 }
