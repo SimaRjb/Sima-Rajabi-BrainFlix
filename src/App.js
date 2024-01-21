@@ -20,7 +20,7 @@ function App() {
       <body>
         <Header />
         <MainVideo mainVideo={mainVideo} />
-        <Comments />
+        <Comments mainVideo={mainVideo}/>
         <VideoList videoListData={videoListData} mainVideo={mainVideo} alterVideo={alterVideo}/>
       </body>
     </div>
