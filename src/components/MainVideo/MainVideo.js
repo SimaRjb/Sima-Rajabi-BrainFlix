@@ -1,14 +1,14 @@
-
 import './MainVideo.scss';
+// import mainVideoData from '../../data/video-details.json';
+// import '../../data/videos.json';
 
-const mainVideoPoster = "https://project-2-api.herokuapp.com/images/image0.jpg";
+const poster = "https://project-2-api.herokuapp.com/images/image0.jpg";
 
-function MainVideo() {
+function MainVideo({mainVideo}) {
   return (
     <section className='main-video'>
       <div className='main-video__wrapper'>
-        <video className='main-video__featured' alt="The Selected Video" poster={mainVideoPoster} controls>
-        {/* <video className='main-video__featured' alt="The Selected Video" poster={mainVideo} controls> */}
+        <video className='main-video__featured' alt="The Selected Video" poster={mainVideo.image} controls>
         </video>
       </div>
     </section>
@@ -16,4 +16,3 @@ function MainVideo() {
 }
 
 export default MainVideo;
-
