@@ -1,12 +1,14 @@
 @use "../../styles/partials/reset" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+
 
 
 .header {
   background-color: $white;
-  font-family: AvenirNextLTPro;
+  font-family: "AvenirNextLTPro", "Nunito";
   &__content {
     margin: 1rem;
     box-sizing: border-box;

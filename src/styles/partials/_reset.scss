@@ -6,10 +6,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  // font-family: "AvenirNextLTPro", "Nunito";
 }
 body {
   margin: 0;
-  font-family: AvenirNextLTPro;
+  font-family: "AvenirNextLTPro", "Nunito";
   color: $brainflix-black;
 }
 //fonts
@@ -55,6 +56,7 @@ label {
 
 button {
   //width for desktop and tablet will be nono less than 150px, and have no less than 32px of padding left and  right
+  font-family: "AvenirNextLTPro", "Nunito";
   text-transform: uppercase;
   color: $white;
   background-color: $brainflix-blue;
