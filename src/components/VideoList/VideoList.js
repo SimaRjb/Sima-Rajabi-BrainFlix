@@ -9,7 +9,7 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
         <ul className="videos__list">
           {videoListData.map((video) => {
             return (
-              video.id != mainVideo.id &&
+              video.id !== mainVideo.id &&
               <li
                 key={video.id}
                 onClick={() => {
@@ -19,7 +19,7 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
               >
                 {video.title}
                 {video.channel}
-                <img className="video__img" src={video.image} />
+                <img className="video__img" src={video.image} alt="poster" />
               </li>
             );
           })}

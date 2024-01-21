@@ -84,7 +84,6 @@ input {
   @include tablet {
     height: 2.5rem;
     font-size: 0.75rem;
-    width: 15rem;
     padding: 1rem;
   }
   &:focus {
@@ -101,6 +100,7 @@ textarea {
   padding: 0.75rem;
   @include tablet {
     padding: 1rem;
+    // width: 15rem;
   }
   &:focus {
     @include set-focus; // doesnt work
