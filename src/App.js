@@ -11,8 +11,9 @@ import videoListData from "./data/videos.json";
 
 function App() {
   const [mainVideo, setMainVideo] = useState(mainVideoData[0]);
-  const alterVideo = (videoObj) => {
-    setMainVideo(videoObj);
+  const alterVideo = (videoId) => {
+    const selectedVideo = mainVideoData.find(videoData => videoData.id == videoId)
+    setMainVideo(selectedVideo);
   };
 
   return (

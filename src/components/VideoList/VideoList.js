@@ -1,21 +1,28 @@
-import './VideoList.scss';
+import "./VideoList.scss";
 // import mainVideoData from '../../data/video-details.json';
 // import '../../data/videos.json';
 
-
-
-function VideoList({videoListData, mainVideo, alterVideo}) {
+function VideoList({ videoListData, mainVideo, alterVideo }) {
   return (
-    <section className='videos'>
-      <div className='videos__wrapper'>
-        <ul className='videos__list'>
-            {videoListData.map((video) =>{
-                return( <li key={video.id}>
-                    {video.title}
-                    {video.channel}
-                    <img className='video__img' src={video.image}/>
-                    </li>)
-            })}
+    <section className="videos">
+      <div className="videos__wrapper">
+        <ul className="videos__list">
+          {videoListData.map((video) => {
+            return (
+              video.id != mainVideo.id &&
+              <li
+                key={video.id}
+                onClick={() => {
+                  console.log(video);
+                  alterVideo(video.id);
+                }}
+              >
+                {video.title}
+                {video.channel}
+                <img className="video__img" src={video.image} />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
