@@ -19,7 +19,7 @@ function Comments({ mainVideo }) {
   return (
     <div>
       <section className="info">
-        <section className="info__details">
+        <section className="info__wrapper">
           {title}
           {channel}
           {views}
