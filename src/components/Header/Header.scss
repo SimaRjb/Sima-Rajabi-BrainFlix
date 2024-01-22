@@ -40,8 +40,9 @@
       @include set-flex;
       gap: 1rem;
       box-sizing: border-box;
+      @include tablet{
       width: 15rem;
-      // width: calc(100% - 3.25rem);
+      }
     }
     &:focus {
       @include set-focus; // doesnt work

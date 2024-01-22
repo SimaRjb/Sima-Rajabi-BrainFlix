@@ -13,9 +13,9 @@ function Header() {
         <div className="header__right">
           <form className="header__form">
             <div className="header__search-avatar-wrapper">
-              <div class="header__search-wrapper">
+              <div className="header__search-wrapper">
                 <input
-                  class="header__search"
+                  className="header__search"
                   type="text"
                   placeholder="Search"
                 />
@@ -34,7 +34,7 @@ function Header() {
           </form>
 
           <div className="header__avatar header__avatar-tablet">
-            <img className="header__avatar-img" src={avatar} alt="avatar"></img>
+            <img className="header__avatar-img" src={avatar} alt="avatar"/>
           </div>
         </div>
       </section>

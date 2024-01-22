@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "./typography" as *;
 
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
@@ -26,3 +27,12 @@
 @mixin set-focus{
   border: 2px solid $brainflix-blue;
 }
+
+@mixin set-font-family{
+  font-family: "AvenirNextLTPro", "Nunito";
+}
+// @mixin add-devider{
+//   border-width: 1px;
+//   border-color: $mercury;
+//   border-style: solid;
+// }

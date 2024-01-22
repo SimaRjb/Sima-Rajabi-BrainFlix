@@ -18,12 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      <body>
+
         <Header />
         <MainVideo mainVideo={mainVideo} />
         <Comments mainVideo={mainVideo}/>
         <VideoList videoListData={videoListData} mainVideo={mainVideo} alterVideo={alterVideo}/>
-      </body>
+
     </div>
   );
 }

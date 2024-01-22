@@ -6,13 +6,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  // font-family: "AvenirNextLTPro", "Nunito";
-}
-body {
-  margin: 0;
   font-family: "AvenirNextLTPro", "Nunito";
   color: $brainflix-black;
 }
+// body {
+//   margin: 0;
+//   font-family: "AvenirNextLTPro", "Nunito";
+//   color: $brainflix-black;
+// }
 //fonts
 h1 {
   @include text-style(1.5rem, 2rem, $font-weight-bold);
@@ -78,7 +79,7 @@ button {
 input {
   font-family: "AvenirNextLTPro", "Nunito";
   border-radius: 4px;
-  height: 2.25rem;
+  // height: 2.25rem;
   padding: 0.75rem;
   border: 1px solid $mercury;
   background-color: $alabaster;
@@ -86,6 +87,7 @@ input {
     height: 2.5rem;
     font-size: 0.75rem;
     padding: 1rem;
+    height: 100%;
   }
   &:focus {
     @include set-focus; //doesnt work

@@ -7,6 +7,10 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
     <section className="videos">
       <div className="videos__wrapper">
         <ul className="videos__list">
+          <li></li>
+          <li></li>
+
+
           {videoListData.map((video) => {
             return (
               video.id !== mainVideo.id &&
