@@ -22,6 +22,7 @@
 .info {
   &__title {
     margin-top: 0;
+    margin-bottom: $mobile-margin;
     &-wrapper {
       text-align: left;
       border-bottom: 1px $mercury solid;
@@ -86,7 +87,7 @@
   }
 
   &__container{
-    padding-top: 1.5rem;
+    padding-top: 0.5rem;
   padding-bottom: 1rem;
   @include tablet{
     padding-top: $tablet-padding-top;

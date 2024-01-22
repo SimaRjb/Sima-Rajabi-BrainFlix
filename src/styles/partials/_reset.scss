@@ -31,6 +31,7 @@ h3 {
   }
 }
 
+
 p {
   @include text-style(0.813rem, 1.125rem, $font-weight-regular);
   @include tablet {

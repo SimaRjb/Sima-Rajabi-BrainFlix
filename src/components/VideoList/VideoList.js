@@ -6,23 +6,11 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
   return (
     <section className="videos">
       <div className="videos__wrapper">
+        <div className="videos__header-wrapper">
+          <h3 className="videos__header">NEXT VIDEOS</h3>
+        </div>
         <ul className="videos__list">
-          {/* <li>
-            <div className="video__wrapper">
-              <div className="video__img-wrapper">
-                <img className="video__img" src="" alt="poster" />
-              </div>
 
-              <div className="video__title-wrapper">
-                <h3 className="video__title"></h3>
-              </div>
-
-              <div className="video__channel-wrapper">
-                <p className="video__channel"></p>
-              </div>
-            </div>
-          </li>
-          <li></li> */}
 
           {videoListData.map((video) => {
             return (
@@ -39,12 +27,14 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
                       <img className="video__img" src={video.image} alt="poster" />
                     </div>
 
+                    <div className="video__wrapper-right">
                     <div className="video__title-wrapper">
                       <h3 className="video__title">{video.title}</h3>
                     </div>
 
                     <div className="video__channel-wrapper">
                       <p className="video__channel">{video.channel}</p>
+                    </div>
                     </div>
                   </div>
                 </li>
