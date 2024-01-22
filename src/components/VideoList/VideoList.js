@@ -1,6 +1,4 @@
 import "./VideoList.scss";
-// import mainVideoData from '../../data/video-details.json';
-// import '../../data/videos.json';
 
 function VideoList({ videoListData, mainVideo, alterVideo }) {
   return (
@@ -10,8 +8,6 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
           <h3 className="videos__header">NEXT VIDEOS</h3>
         </div>
         <ul className="videos__list">
-
-
           {videoListData.map((video) => {
             return (
               video.id !== mainVideo.id && (
@@ -24,17 +20,21 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
                 >
                   <div className="video__wrapper">
                     <div className="video__img-wrapper">
-                      <img className="video__img" src={video.image} alt="poster" />
+                      <img
+                        className="video__img"
+                        src={video.image}
+                        alt="poster"
+                      />
                     </div>
 
                     <div className="video__wrapper-right">
-                    <div className="video__title-wrapper">
-                      <h3 className="video__title">{video.title}</h3>
-                    </div>
+                      <div className="video__title-wrapper">
+                        <h3 className="video__title">{video.title}</h3>
+                      </div>
 
-                    <div className="video__channel-wrapper">
-                      <p className="video__channel">{video.channel}</p>
-                    </div>
+                      <div className="video__channel-wrapper">
+                        <p className="video__channel">{video.channel}</p>
+                      </div>
                     </div>
                   </div>
                 </li>

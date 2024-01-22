@@ -1,15 +1,18 @@
-import './MainVideo.scss';
-import mainVideoData from '../../data/video-details.json';
-import '../../data/videos.json';
+import "./MainVideo.scss";
+import "../../data/videos.json";
 
-function MainVideo({mainVideo}) {
+function MainVideo({ mainVideo }) {
   return (
-    <section className='main-video'>
-      <div className='main-video-container'>
-      <div className='main-video__wrapper'>
-        <video className='main-video__featured' alt="The Selected Video" poster={mainVideo.image} controls>
-        </video>
-      </div>
+    <section className="main-video">
+      <div className="main-video-container">
+        <div className="main-video__wrapper">
+          <video
+            className="main-video__featured"
+            alt="The Selected Video"
+            poster={mainVideo.image}
+            controls
+          ></video>
+        </div>
       </div>
     </section>
   );

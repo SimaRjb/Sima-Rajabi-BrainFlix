@@ -3,22 +3,20 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-.main-video{
-    background-color: $brainflix-dark-black;
-    &__wrapper{
-        width: 100%;
-        @include tablet{
-            padding-left: $tablet-padding;
-            padding-right: $tablet-padding;
-        }
-        @include desktop{
-            padding-left: $desktop-padding;
-            padding-right: $desktop-padding;
-        }
+.main-video {
+  background-color: $brainflix-dark-black;
+  &__wrapper {
+    width: 100%;
+    @include tablet {
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
     }
-    &__featured{
-        width: 100%;
-        
+    @include desktop {
+      padding-left: $desktop-padding;
+      padding-right: $desktop-padding;
     }
+  }
+  &__featured {
+    width: 100%;
+  }
 }
-

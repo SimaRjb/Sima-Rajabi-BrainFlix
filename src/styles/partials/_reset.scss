@@ -9,11 +9,7 @@
   font-family: "AvenirNextLTPro", "Nunito";
   color: $brainflix-black;
 }
-// body {
-//   margin: 0;
-//   font-family: "AvenirNextLTPro", "Nunito";
-//   color: $brainflix-black;
-// }
+
 //fonts
 h1 {
   @include text-style(1.5rem, 2rem, $font-weight-bold);

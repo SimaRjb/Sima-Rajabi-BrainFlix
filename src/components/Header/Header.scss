@@ -3,19 +3,16 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 
-
-
-
 .header {
   background-color: $white;
   font-family: "AvenirNextLTPro", "Nunito";
-  &__btn{
-    &-wrapper{
+  &__btn {
+    &-wrapper {
       position: relative;
     }
-    &-icon{
+    &-icon {
       position: absolute;
-      left: 10px; 
+      left: 10px;
       top: 40%;
       transform: translateY(-50%);
     }
@@ -23,34 +20,34 @@
   &__content {
     margin: 1rem;
     box-sizing: border-box;
-    
+
     @include set-flex(column);
     gap: 1rem;
-    @include tablet{
+    @include tablet {
       margin-left: $tablet-margin;
       margin-right: $tablet-margin;
       @include set-flex;
       justify-content: space-between;
     }
-    @include desktop{
+    @include desktop {
       margin-left: $desktop-margin;
       margin-right: $desktop-margin;
     }
   }
-  &__right{
+  &__right {
     @include set-flex;
-    gap:1rem;
-    @include tablet{
+    gap: 1rem;
+    @include tablet {
       gap: 2rem;
     }
   }
 
-  &__search{
+  &__search {
     width: 100%;
-    &::placeholder{
+    &::placeholder {
       color: $brainflix-black;
       position: absolute;
-      left: 30px; 
+      left: 30px;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -58,21 +55,21 @@
       @include set-flex;
       gap: 1rem;
       box-sizing: border-box;
-      @include tablet{
-      width: 15rem;
+      @include tablet {
+        width: 15rem;
       }
     }
     &:focus {
-      @include set-focus; // doesnt work
+      @include set-focus;
     }
 
-    &-wrapper{
+    &-wrapper {
       width: 100%;
       position: relative;
     }
-    &-icon{
+    &-icon {
       position: absolute;
-      left: 10px; 
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -82,7 +79,7 @@
     @include set-flex(column);
     gap: 1rem;
     width: 100%;
-    @include tablet{
+    @include tablet {
       @include set-flex;
     }
   }
@@ -91,8 +88,8 @@
     width: 7.5rem;
     height: 1.563rem;
 
-    &-wrapper{
-      @include tablet{
+    &-wrapper {
+      @include tablet {
         @include set-flex;
         align-content: flex-start;
         align-items: center;
@@ -107,11 +104,11 @@
         display: none;
       }
     }
-    &-tablet{
-        display: none;
-        @include tablet {
-          @include set-flex(column);
-        }
+    &-tablet {
+      display: none;
+      @include tablet {
+        @include set-flex(column);
+      }
     }
     &-img {
       border-radius: 50%;

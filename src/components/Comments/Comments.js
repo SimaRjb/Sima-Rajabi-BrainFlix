@@ -88,19 +88,7 @@ function Comments({ mainVideo }) {
                 </label>
                 <div className="form__right">
                   <div className="form__new-comment-container">
-                    {/* <div className="form__section">
-                    <label for="userName" className="form__label">NAME</label>
-                    <input
-                      className="form__field form__name"
-                      type="text"
-                      name="userName"
-                      id="userName"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div> */}
                     <div className="form__section">
-                      {/* <label for="userComment" className="form__label">COMMENT</label> */}
                       <textarea
                         className="form__field form__comment"
                         id="userComment"
@@ -115,7 +103,11 @@ function Comments({ mainVideo }) {
                     </div>
                   </div>
                   <div className="form__button-wrapper">
-                    <img className="form__button-icon" src={addCommentIcon} alt="add"/>
+                    <img
+                      className="form__button-icon"
+                      src={addCommentIcon}
+                      alt="add"
+                    />
                     <button className="form__button" type="submit">
                       COMMENT
                     </button>
@@ -129,12 +121,6 @@ function Comments({ mainVideo }) {
               {comments.map((comment) => {
                 return (
                   <div>
-                    {/* <li key={comment.id}>
-                      <div>{comment.name}</div>
-                      <div>{formatDate(comment.timestamp)}</div>
-                      <div>{comment.comment}</div>
-                    </li> */}
-
                     <li key={comment.id} className="comment">
                       <div className="comment__avatar-wrapper">
                         <div className="comment__avatar"></div>
@@ -143,82 +129,19 @@ function Comments({ mainVideo }) {
                         <div className="comment__head">
                           <p className="comment__author">{comment.name}</p>
                           <div className="comment__head-right">
-                            <p className="comment__date">{formatDate(comment.timestamp)}</p>
+                            <p className="comment__date">
+                              {formatDate(comment.timestamp)}
+                            </p>
                           </div>
                         </div>
                         <div className="comment__text">
-                          <p className="comment__par">
-                          {comment.comment}
-                          </p>
+                          <p className="comment__par">{comment.comment}</p>
                         </div>
                       </div>
                     </li>
                   </div>
                 );
               })}
-
-              {/* <li className="comment">
-                <div className="comment__avatar-wrapper">
-                  <div className="comment__avatar"></div>
-                </div>
-                <div className="comment__content">
-                  <div className="comment__head">
-                    <p className="comment__author">Connor Walton</p>
-                    <div className="comment__head-right">
-                      <p className="comment__date">02/17/2021</p>
-                    </div>
-                  </div>
-                  <div className="comment__text">
-                    <p className="comment__par">
-                      This is art. This is inexplicable magic expressed in the
-                      purest way, everything that makes up this majestic work
-                      deserves reverence. Let us appreciate this for what it is
-                      and what it contains.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li className="comment">
-                <div className="comment__avatar-wrapper">
-                  <div className="comment__avatar"></div>
-                </div>
-                <div className="comment__content">
-                  <div className="comment__head">
-                    <p className="comment__author">Emilie Beach</p>
-                    <div className="comment__head-right">
-                      <p className="comment__date">01/09/2021</p>
-                    </div>
-                  </div>
-                  <div className="comment__text">
-                    <p className="comment__par">
-                      I feel blessed to have seen them in person. What a show!
-                      They were just perfection. If there was one day of my life
-                      I could relive, this would be it. What an incredible day.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li className="comment">
-                <div className="comment__avatar-wrapper">
-                  <div className="comment__avatar"></div>
-                </div>
-                <div className="comment__content">
-                  <div className="comment__head">
-                    <p className="comment__author">Miles Acosta</p>
-                    <div className="comment__head-right">
-                      <p className="comment__date">12/20/2020</p>
-                    </div>
-                  </div>
-                  <div className="comment__text">
-                    <p className="comment__par">
-                      I can't stop listening. Every time I hear one of their
-                      songs - the vocals - it gives me goosebumps. Shivers
-                      straight down my spine. What a beautiful expression of
-                      creativity. Can't get enough.
-                    </p>
-                  </div>
-                </div>
-              </li> */}
             </ul>
           </section>
         </div>
