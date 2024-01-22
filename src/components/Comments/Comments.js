@@ -107,8 +107,8 @@ function Comments({ mainVideo }) {
                         placeholder="Add a new comment"
                         cols="30"
                         rows="3"
-                        minlength="1"
-                        maxlength="300"
+                        minLength="1"
+                        maxLength="300"
                         required
                       ></textarea>
                     </div>

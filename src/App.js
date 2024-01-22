@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import "./components/Header/Header";
 import Header from "./components/Header/Header";
 import MainVideo from "./components/MainVideo/MainVideo";
@@ -21,8 +21,15 @@ function App() {
 
         <Header />
         <MainVideo mainVideo={mainVideo} />
-        <Comments mainVideo={mainVideo}/>
-        <VideoList videoListData={videoListData} mainVideo={mainVideo} alterVideo={alterVideo}/>
+
+        <div className="wrapper">
+          <div className="wrapper__comments">
+        <Comments className="video-info" mainVideo={mainVideo}/>
+        </div>
+        <div className="wrapper__video-list">
+        <VideoList className="video-list" videoListData={videoListData} mainVideo={mainVideo} alterVideo={alterVideo}/>
+        </div>
+        </div>
 
     </div>
   );

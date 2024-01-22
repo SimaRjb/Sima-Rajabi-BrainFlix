@@ -16,6 +16,8 @@
     }
     @include desktop {
       padding-bottom: 5rem;
+      padding-right: 3rem;
+      padding-top: $desktop-padding-top;
       border-left: 1px $mercury solid; 
     }
   }
@@ -38,6 +40,7 @@
     gap: 1rem;
     @include set-flex;
     justify-content: flex-start;
+
     &-right {
       @include set-flex(column);
       width: 40%;
@@ -47,6 +50,9 @@
 
       @include tablet{
         width: 20%;
+      }
+      @include desktop{
+        width: 100%;
       }
     }
   }

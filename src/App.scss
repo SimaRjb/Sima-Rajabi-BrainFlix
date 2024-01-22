@@ -1,3 +1,4 @@
+@use "./styles/partials/mixins";
 .App {
   text-align: center;
 }
@@ -36,3 +37,26 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  @include mixins.desktop {
+    display: flex;
+  }
+}
+.wrapper__comments {
+  @include mixins.desktop {
+    width: 80%;
+  }
+}
+
+// .video-info{
+//   @include mixins.desktop{
+//     width: 30%;
+//   }
+// }
+
+// .video-list{
+//   @include mixins.desktop{
+//     width: 80%;
+//   }
+// }
