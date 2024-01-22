@@ -9,6 +9,17 @@
 .header {
   background-color: $white;
   font-family: "AvenirNextLTPro", "Nunito";
+  &__btn{
+    &-wrapper{
+      position: relative;
+    }
+    &-icon{
+      position: absolute;
+      left: 10px; 
+      top: 40%;
+      transform: translateY(-50%);
+    }
+  }
   &__content {
     margin: 1rem;
     box-sizing: border-box;
@@ -36,6 +47,13 @@
 
   &__search{
     width: 100%;
+    &::placeholder{
+      color: $brainflix-black;
+      position: absolute;
+      left: 30px; 
+      top: 50%;
+      transform: translateY(-50%);
+    }
     &-avatar-wrapper {
       @include set-flex;
       gap: 1rem;
@@ -50,6 +68,13 @@
 
     &-wrapper{
       width: 100%;
+      position: relative;
+    }
+    &-icon{
+      position: absolute;
+      left: 10px; 
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 

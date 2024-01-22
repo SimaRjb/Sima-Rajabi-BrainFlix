@@ -3,6 +3,7 @@ import formatDate from "../../utils/dateUtils";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
+import addCommentIcon from "../../assets/icons/add_comment.svg";
 
 function Comments({ mainVideo }) {
   const {
@@ -114,6 +115,7 @@ function Comments({ mainVideo }) {
                     </div>
                   </div>
                   <div className="form__button-wrapper">
+                    <img className="form__button-icon" src={addCommentIcon} alt="add"/>
                     <button className="form__button" type="submit">
                       COMMENT
                     </button>
