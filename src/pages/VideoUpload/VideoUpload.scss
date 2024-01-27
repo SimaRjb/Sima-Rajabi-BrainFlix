@@ -100,7 +100,12 @@
   }
   &__right {
     @include set-flex(column);
+    gap: 1rem;
+    @include tablet{
+        gap: 1.25rem;
+    }
     @include desktop {
+        gap: 1.5rem;
       width: 100%;
     }
   }
