@@ -8,6 +8,7 @@ import VideoList from "./components/VideoList/VideoList";
 import Comments from "./components/Comments/Comments";
 import mainVideoData from './data/video-details.json'
 import videoListData from "./data/videos.json";
+import VideoUpload from "./pages/VideoUpload/VideoUpload";
 
 function App() {
   const [mainVideo, setMainVideo] = useState(mainVideoData[0]);
@@ -20,7 +21,9 @@ function App() {
     <div className="App">
 
         <Header />
+        <VideoUpload/>
         <MainVideo mainVideo={mainVideo} />
+        
 
         <div className="wrapper">
           <div className="wrapper__comments">

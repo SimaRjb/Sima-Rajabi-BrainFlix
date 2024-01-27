@@ -1,0 +1,168 @@
+@use "../../styles/partials/reset" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.upload {
+  &-wrapper {
+    margin-bottom: 20px;
+  }
+  border-top: 1px $mercury solid;
+  &__content {
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+    @include tablet {
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+    }
+    @include desktop {
+      padding-left: $desktop-padding;
+      padding-right: $desktop-padding;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    text-align: left;
+    &-content {
+      padding-top: $mobile-padding-top;
+      padding-bottom: $mobile-padding-bottom;
+      @include tablet {
+        border-bottom: 1px $mercury solid;
+        padding-top: $tablet-padding-top;
+        padding-bottom: $tablet-padding-bottom;
+      }
+      @include desktop {
+        padding-top: $desktop-padding-top;
+        padding-bottom: $desktop-padding-bottom;
+      }
+    }
+  }
+}
+
+.form {
+  @include set-flex(column);
+  gap: 1rem;
+
+  @include tablet {
+    gap: 1.5rem;
+    padding-top: $tablet-padding-top;
+  }
+  @include desktop {
+    gap: 2rem;
+    padding-top: $desktop-padding-top;
+  }
+
+  &__content {
+    @include set-flex(column);
+    gap: 1rem;
+    @include tablet {
+      grid-area: 1.25rem;
+      border-bottom: 1px $mercury solid;
+      padding-bottom: $tablet-padding-bottom;
+    }
+    @include desktop {
+      gap: 1.5rem;
+      @include set-flex;
+      padding-bottom: $desktop-padding-bottom;
+    }
+  }
+
+  &__img {
+    border-radius: 4px;
+    width: 100%;
+    @include desktop {
+        height: 100%;
+      }
+    &-wrapper {
+      @include tablet {
+        width: 50%;
+      }
+      @include desktop {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__left {
+    @include set-flex(column);
+    gap: 0.25rem;
+    justify-content: flex-start;
+    @include desktop {
+      width: 35%;
+    }
+  }
+  &__label {
+    &-wrapper {
+      @include set-flex;
+      justify-content: flex-start;
+    }
+  }
+  &__right {
+    @include set-flex(column);
+    @include desktop {
+      width: 100%;
+    }
+  }
+  &__title {
+    &-wrapper {
+      @include set-flex(column);
+      gap: 0.25rem;
+    }
+  }
+
+  &__description {
+    &-wrapper {
+      @include set-flex(column);
+      gap: 0.25rem;
+    }
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__btn {
+    width: 100%;
+    @include tablet{
+        width: 9.375rem;        
+    }
+    &-wrapper {
+      @include set-flex(column);
+      gap: 1rem;
+      justify-content: flex-end;
+      @include tablet {
+        gap: 1.25rem;
+      }
+      @include desktop {
+        gap: 1.5rem;
+      }
+
+      @include tablet {
+        @include set-flex;
+      }
+    }
+    &-container {
+      width: 100%;
+      @include tablet {
+        width: 9.375rem;
+      }
+    }
+    
+
+    &-cancel {
+      background-color: $white;
+      color: $brainflix-blue;
+    }
+    &-publish-wrapper{
+        position: relative;
+    }
+    &-icon {
+      position: absolute;
+      left: 10px;
+      top: 40%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
