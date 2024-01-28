@@ -1,16 +1,14 @@
 import "./HomePage.scss";
 import MainVideo from "../../components/MainVideo/MainVideo";
-import VideoList from "../../components/VideoList/VideoList";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import axios from "axios";
 
 function HomePage() {
   const baseUrl = "https://project-2-api.herokuapp.com";
 
-  const { videoId } = useParams();
-  //  videoId = "84e96018-4022-434e-80bf-000ce4cd12b8"
-  const [videoDetails, setVideoDetails] = useState({});
+
+  //  a = "84e96018-4022-434e-80bf-000ce4cd12b8"
+  //b = "99478bed-6428-49ed-8eaa-f245a5414336"
 
   const [apiKey, setApiKey] = useState(null);
   const fetchApiKey = async () => {
@@ -22,48 +20,53 @@ function HomePage() {
       console.error("Error fetching API key: ", error);
     }
   };
-useEffect(()=>{
+  useEffect(() => {
     fetchApiKey();
-},[])
+  }, []);
 
-//   const fetchVideoDetails = async () => {
-//     try {
-//       if (videoId) {
-//         const resVideoDetails = await axios.get(
-//           `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
-//         );
-//         setVideoDetails(resVideoDetails.data);
-//         console.log("resVideoDetails: ", resVideoDetails.data);
-//         console.log("video details : ", videoDetails);
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   useEffect(() => {
-//     fetchVideoDetails();
-//   }, []);
 
-  //  const fetchVideoList = async () =>{
-  //     try {
-  //         const resVideoList = await axios.get(`${baseUrl}/videos?api_key=${apiKey}`)
-  //         console.log(resVideoList.data);
-  //     } catch (error) {
-  //         console.error(error);
-  //     }
-  //  }
+const [videoList, setVideoList] = useState([])
+  const fetchVideoList = async () => {
+    try {
+      const res = await axios.get(
+        `${baseUrl}/videos?api_key=${apiKey}`
+      );
+      setVideoList(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  //  (async() =>{
-  //     fetchVideoList();
-  //  })();
+  useEffect(() => {
+    fetchVideoList();
+  }, []);
 
   return (
     <main>
-     <div>
-  </div>
-      <MainVideo apiKey={apiKey}/>
-      <VideoList/>
+      <div></div>
+      {videoList.length > 0 &&
+      <MainVideo apiKey={apiKey} baseUrl={baseUrl} videoList={videoList}/>}
     </main>
   );
 }
 export default HomePage;
+
+
+  //   const fetchVideoDetails = async () => {
+  //     try {
+  //       if (videoId) {
+  //         const resVideoDetails = await axios.get(
+  //           `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
+  //         );
+  //         setVideoDetails(resVideoDetails.data);
+  //         console.log("resVideoDetails: ", resVideoDetails.data);
+  //         console.log("video details : ", videoDetails);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   useEffect(() => {
+  //     fetchVideoDetails();
+  //   }, []);
