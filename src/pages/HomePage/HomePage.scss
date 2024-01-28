@@ -1,0 +1,11 @@
+@use '../../styles/partials/mixins';
+.wrapper {
+    @include mixins.desktop {
+      display: flex;
+    }
+  }
+  .wrapper__comments {
+    @include mixins.desktop {
+      width: 80%;
+    }
+  }

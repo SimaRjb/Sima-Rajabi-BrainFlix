@@ -33,9 +33,8 @@ function App() {
       </Routes>
       </BrowserRouter>
 
-        {/* <Header />
-        <VideoUpload/>
-        <MainVideo mainVideo={mainVideo} />
+
+        {/* <MainVideo mainVideo={mainVideo} />
         
 
         <div className="wrapper">
