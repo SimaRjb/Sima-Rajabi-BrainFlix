@@ -4,8 +4,8 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 
-function MainVideo({ apiKey, baseUrl, videoList }) {
-  const { videoId } = useParams();
+function MainVideo({videoId, apiKey, baseUrl, videoList }) {
+
   const [mainVideo, setMainVideo] = useState({});
   const fetchMainVideo = async () => {
     try {

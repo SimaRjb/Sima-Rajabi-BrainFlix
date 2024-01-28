@@ -8,10 +8,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 
-function VideoDetails({ apiKey, baseUrl, videoList }) {
-  const { videoId } = useParams();
+function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
+
   const [mainVideo, setMainVideo] = useState({});
-  const [mainVideoId, setMainVideoId] = useState({});
 
   const fetchMainVideo = async () => {
     try {
@@ -155,8 +154,8 @@ function VideoDetails({ apiKey, baseUrl, videoList }) {
             <ul className="comments__list">
               {comments && comments.map((comment) => {
                 return (
-                  <div >
-                    <li key={comment.id}  className="comment">
+                  <div key={comment.id}   >
+                    <li className="comment">
                       <div className="comment__avatar-wrapper">
                         <div className="comment__avatar"></div>
                       </div>

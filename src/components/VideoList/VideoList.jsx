@@ -1,6 +1,8 @@
 import "./VideoList.scss";
+import { NavLink } from 'react-router-dom';
 
-function VideoList({ videoListData, mainVideo, alterVideo }) {
+function VideoList({videoId, videoList }) {
+  
   return (
     <section className="videos">
       <div className="videos__wrapper">
@@ -8,16 +10,19 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
           <h3 className="videos__header">NEXT VIDEOS</h3>
         </div>
         <ul className="videos__list">
-          {videoListData.map((video) => {
+          {videoList && videoList.length > 0 && videoList.map((video) => {
+            console.log("video Id videolist component: ", videoId);
+            console.log("video.id videolist component: ", video.id);
             return (
-              video.id !== mainVideo.id && (
+              video.id !== videoId && (
                 <li
                   key={video.id}
-                  onClick={() => {
-                    console.log(video);
-                    alterVideo(video.id);
-                  }}
+                  // onClick={() => {
+                  //   console.log(video);
+                  //   alterVideo(video.id);
+                  // }}
                 >
+                   <NavLink to={`/${video.id.toString()}`} className="video-link" activeClassName="active">
                   <div className="video__wrapper">
                     <div className="video__img-wrapper">
                       <img
@@ -37,6 +42,7 @@ function VideoList({ videoListData, mainVideo, alterVideo }) {
                       </div>
                     </div>
                   </div>
+                  </NavLink>
                 </li>
               )
             );
