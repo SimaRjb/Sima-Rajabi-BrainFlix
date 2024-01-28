@@ -7,7 +7,6 @@ import axios from "axios";
 
 function HomePage() {
   const baseUrl = "https://project-2-api.herokuapp.com";
-//   let apiKey = null; //global variable to store the API Key
 
   const { videoId } = useParams();
   //  videoId = "84e96018-4022-434e-80bf-000ce4cd12b8"
@@ -61,10 +60,9 @@ useEffect(()=>{
   return (
     <main>
      <div>
-    {/* Render component content here */}
-    {/* {console.log(apiKey)} */}
   </div>
-      <MainVideo videoId={videoId}/>
+      <MainVideo apiKey={apiKey}/>
+      <VideoList/>
     </main>
   );
 }
