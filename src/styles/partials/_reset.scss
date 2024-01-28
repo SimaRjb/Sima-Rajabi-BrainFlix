@@ -91,7 +91,10 @@ input {
     height: 100%;
   }
   &:focus {
-    @include set-focus; //doesnt work
+    @include set-focus;
+  }
+  &:active{
+    @include set-focus;
   }
 }
 

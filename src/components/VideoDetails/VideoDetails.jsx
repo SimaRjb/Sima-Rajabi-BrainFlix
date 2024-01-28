@@ -9,7 +9,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
-
+  console.log("video id inside details: ", videoId);
   const [mainVideo, setMainVideo] = useState({});
 
   const fetchMainVideo = async () => {
@@ -36,7 +36,7 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
   };
   useEffect(() => {
     fetchMainVideo();
-  }, []);
+  }, [videoId]);
 
   const {
     id,

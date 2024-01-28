@@ -45,7 +45,7 @@ function HomePage() {
   }, []);
 
   const { videoId } = useParams();
-
+console.log("video id inside home: ",videoId);
   return (
     <main>
       <div></div>

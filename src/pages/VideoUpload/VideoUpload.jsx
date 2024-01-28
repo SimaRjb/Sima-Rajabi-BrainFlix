@@ -14,50 +14,50 @@ function VideoUpload() {
               </div>
             </div>
 
-            <section className="form-wrapper">
-              <div className="form-container">
-                <form className="form">
-                  <div className="form__content">
-                    <div className="form__left">
-                      <div className="form__label-wrapper">
-                        <label className="form__label"> VIDEO THUMBNAIL</label>
+            <section className="form-upload-wrapper">
+              <div className="form-upload-container">
+                <form-upload className="form-upload">
+                  <div className="form-upload__content">
+                    <div className="form-upload__left">
+                      <div className="form-upload__label-wrapper">
+                        <label className="form-upload__label"> VIDEO THUMBNAIL</label>
                       </div>
-                      <div className="form__img-wrapper">
+                      <div className="form-upload__img-wrapper">
                         <img
-                          className="form__img"
+                          className="form-upload__img"
                           src={formImg}
                           alt="preview"
                         />
                       </div>
                     </div>
 
-                    <div className="form__right">
-                      <div className="form__title-wrapper">
-                        <div className="form__label-wrapper">
-                          <label className="form__label">
+                    <div className="form-upload__right">
+                      <div className="form-upload__title-wrapper">
+                        <div className="form-upload__label-wrapper">
+                          <label className="form-upload__label">
                             {" "}
                             ADD A VIDEO DESCRIPTION
                           </label>
                         </div>
-                        <div className="form__input-wrapper">
+                        <div className="form-upload__input-wrapper">
                           <input
-                            className="form__input form__title"
+                            className="form-upload__input form-upload__title"
                             type="text"
                             placeholder="Add a title to your video"
                           />
                         </div>
                       </div>
 
-                      <div className="form__description-wrapper">
-                        <div className="form__label-wrapper">
-                          <label className="form__label">
+                      <div className="form-upload__description-wrapper">
+                        <div className="form-upload__label-wrapper">
+                          <label className="form-upload__label">
                             {" "}
                             ADD A VIDEO DESCRIPTION
                           </label>
                         </div>
-                        <div className="form__input-wrapper">
+                        <div className="form-upload__input-wrapper">
                           <textarea
-                            className="form__input form__description"
+                            className="form-upload__input form-upload__description"
                             type="text"
                             placeholder="Add a description to your video"
                             rows={3}
@@ -67,23 +67,23 @@ function VideoUpload() {
                     </div>
                   </div>
 
-                  <div className="form__btn-wrapper">
-                    <div className="form__btn-cancel-wrapper form__btn-container">
-                      <button className="form__btn form__btn-cancel">
+                  <div className="form-upload__btn-wrapper">
+                    <div className="form-upload__btn-cancel-wrapper form-upload__btn-container">
+                      <button className="form-upload__btn form-upload__btn-cancel">
                         CANCEL
                       </button>
                     </div>
-                    <div className="form__btn-publish-wrapper form__btn-container">
-                      <img className="form__btn-icon" src={publishIcon} />
+                    <div className="form-upload__btn-publish-wrapper form-upload__btn-container">
+                      <img className="form-upload__btn-icon" src={publishIcon} />
                       <button
-                        className="form__btn form__btn-publish"
+                        className="form-upload__btn form-upload__btn-publish"
                         type="submit"
                       >
                         PUBLISH
                       </button>
                     </div>
                   </div>
-                </form>
+                </form-upload>
               </div>
             </section>
           </div>

@@ -2,10 +2,12 @@ import "./MainVideo.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 function MainVideo({videoId, apiKey, baseUrl, videoList }) {
 
+  console.log("video id inside main video: ", videoId)
   const [mainVideo, setMainVideo] = useState({});
   const fetchMainVideo = async () => {
     try {
@@ -24,9 +26,10 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
   };
   useEffect(() => {
     fetchMainVideo();
-  }, []);
+  }, [videoId]);
 
   return (
+    
     <section className="main-video">
       <div className="main-video-container">
         <div className="main-video__wrapper">
@@ -38,7 +41,9 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
           ></video>
         </div>
       </div>
+  
     </section>
+    
   );
 }
 
