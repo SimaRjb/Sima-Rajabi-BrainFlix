@@ -107,7 +107,8 @@
 }
 
 .form {
-  @include set-flex;
+ display: flex;
+ flex-direction: row;
   box-sizing: border-box;
   gap: 1rem;
   padding-bottom: 1rem;

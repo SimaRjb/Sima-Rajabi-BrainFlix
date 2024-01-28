@@ -1,11 +1,44 @@
-import "./Comments.scss";
+import "./VideoDetails.scss";
 import formatDate from "../../utils/dateUtils";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
 import addCommentIcon from "../../assets/icons/add_comment.svg";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import axios from "axios";
 
-function Comments({ mainVideo }) {
+function VideoDetails({ apiKey, baseUrl, videoList }) {
+  const { videoId } = useParams();
+  const [mainVideo, setMainVideo] = useState({});
+  const [mainVideoId, setMainVideoId] = useState({});
+
+  const fetchMainVideo = async () => {
+    try {
+      let response;
+      if(videoId){
+          response = await axios.get(
+          `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
+        );
+    }
+      else{
+        const defaultVideoId = videoList[0].id;
+        response = await axios.get(
+          `${baseUrl}/videos/${defaultVideoId}?api_key=${apiKey}`
+        );
+      }
+
+      if(response){
+        setMainVideo(response.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchMainVideo();
+  }, []);
+
   const {
     id,
     title,
@@ -72,7 +105,9 @@ function Comments({ mainVideo }) {
 
       <section className="comments">
         <div className="comments__container">
-          <h3 className="comments__count">{comments.length} Comments</h3>
+          {comments && comments.length > 0 && (
+            <h3 className="comments__count">{comments.length} Comments</h3>
+          )}
           <div className="form__wrapper">
             <form className="form" id="comment-form">
               <div className="form__avatar">
@@ -118,10 +153,10 @@ function Comments({ mainVideo }) {
           </div>
           <section className="comments__display">
             <ul className="comments__list">
-              {comments.map((comment) => {
+              {comments && comments.map((comment) => {
                 return (
-                  <div>
-                    <li key={comment.id} className="comment">
+                  <div >
+                    <li key={comment.id}  className="comment">
                       <div className="comment__avatar-wrapper">
                         <div className="comment__avatar"></div>
                       </div>
@@ -150,4 +185,4 @@ function Comments({ mainVideo }) {
   );
 }
 
-export default Comments;
+export default VideoDetails;
