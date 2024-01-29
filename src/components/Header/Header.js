@@ -3,14 +3,16 @@ import logo from "../../assets/icons/BrainFlix-logo.svg";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 import searchIcon from "../../assets/icons/search.svg";
 import uploadIcon from "../../assets/icons/upload.svg"
+import { Link, useParams } from "react-router-dom";
 
 function Header() {
+
   return (
     <header>
       <section className="header__content">
-        <div className="header__logo-wrapper">
+        <Link to="/" className="header__logo-wrapper">
           <img className="header__logo" src={logo} alt="BrainFlix logo" />
-        </div>
+        </Link>
 
         <div className="header__right">
           <form className="header__form">
@@ -31,10 +33,10 @@ function Header() {
                 ></img>
               </div>
             </div>
-            <div className="header__btn-wrapper">
+            <Link to="/upload" className="header__btn-wrapper">
               <img className="header__btn-icon" src={uploadIcon}/>
               <button className="header__btn">UPLOAD</button>
-            </div>
+            </Link>
           </form>
 
           <div className="header__avatar header__avatar-tablet">

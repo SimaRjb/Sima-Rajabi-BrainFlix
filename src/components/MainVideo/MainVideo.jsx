@@ -28,9 +28,7 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
     fetchMainVideo();
   }, [videoId]);
 
-  if(!mainVideo){
-    return <div>...is loading</div>
-  }
+
 
   return (
     
