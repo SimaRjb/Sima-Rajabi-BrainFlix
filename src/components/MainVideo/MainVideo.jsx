@@ -28,11 +28,16 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
     fetchMainVideo();
   }, [videoId]);
 
+  if(!mainVideo){
+    return <div>...is loading</div>
+  }
+
   return (
     
     <section className="main-video">
       <div className="main-video-container">
         <div className="main-video__wrapper">
+
           <video
             className="main-video__featured"
             alt="The Selected Video"

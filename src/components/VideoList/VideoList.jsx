@@ -2,10 +2,11 @@ import "./VideoList.scss";
 import { Link } from 'react-router-dom';
 
 function VideoList({videoId, videoList }) {
-  const currentImage = videoList.find(video => video.id === (videoId || videoList[0].id))
   let currentId = videoId;
+  console.log("this is video list", videoList)
   if(!currentId){
-    currentId = videoList[0].id;
+    // currentId = videoList[0].id;
+    console.log("this is video list[0]", videoList[0])
   }
   return (
     <section className="videos">

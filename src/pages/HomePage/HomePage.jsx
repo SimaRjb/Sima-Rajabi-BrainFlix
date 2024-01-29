@@ -45,9 +45,12 @@ function HomePage() {
   const { videoId } = useParams();
   console.log("video id inside home: ", videoId);
   return (
+    
     <main>
+      {!loading && videoList && videoList.length > 0 && (
+        <>
       <MainVideo videoId={videoId} apiKey={apiKey} baseUrl={baseUrl} videoList={videoList} />
-
+      
       <div className="wrapper">
         <div className="wrapper__comments">
         <VideoDetails
@@ -61,6 +64,11 @@ function HomePage() {
         <VideoList videoId={videoId} videoList={videoList} />
         </div>
       </div>
+      </>
+)}
+      </main>
+  );
+}
 
       {/* {!loading && videoList && videoList.length > 0 && (
         <>
@@ -74,9 +82,7 @@ function HomePage() {
           <VideoList videoId={videoId} videoList={videoList} />
         </>
       )} */}
-    </main>
-  );
-}
+ 
 export default HomePage;
 
 //   const fetchVideoDetails = async () => {
