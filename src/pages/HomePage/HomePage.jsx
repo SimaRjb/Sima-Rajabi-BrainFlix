@@ -43,7 +43,6 @@ function HomePage() {
   }, []);
 
   const { videoId } = useParams();
-  console.log("video id inside home: ", videoId);
   return (
     
     <main>
@@ -70,35 +69,4 @@ function HomePage() {
   );
 }
 
-      {/* {!loading && videoList && videoList.length > 0 && (
-        <>
-          <MainVideo videoId={videoId} apiKey={apiKey} baseUrl={baseUrl} videoList={videoList} />
-          <VideoDetails
-          videoId={videoId}
-            apiKey={apiKey}
-            baseUrl={baseUrl}
-            videoList={videoList}
-          />
-          <VideoList videoId={videoId} videoList={videoList} />
-        </>
-      )} */}
- 
 export default HomePage;
-
-//   const fetchVideoDetails = async () => {
-//     try {
-//       if (videoId) {
-//         const resVideoDetails = await axios.get(
-//           `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
-//         );
-//         setVideoDetails(resVideoDetails.data);
-//         console.log("resVideoDetails: ", resVideoDetails.data);
-//         console.log("video details : ", videoDetails);
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   useEffect(() => {
-//     fetchVideoDetails();
-//   }, []);

@@ -5,11 +5,9 @@ import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
 import addCommentIcon from "../../assets/icons/add_comment.svg";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import axios from "axios";
 
 function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
-  console.log("video id inside details: ", videoId);
   const [mainVideo, setMainVideo] = useState({});
 
   const fetchMainVideo = async () => {

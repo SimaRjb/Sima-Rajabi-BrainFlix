@@ -1,13 +1,8 @@
 import "./MainVideo.scss";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-
-function MainVideo({videoId, apiKey, baseUrl, videoList }) {
-
-  console.log("video id inside main video: ", videoId)
+function MainVideo({ videoId, apiKey, baseUrl, videoList }) {
   const [mainVideo, setMainVideo] = useState({});
   const fetchMainVideo = async () => {
     try {
@@ -15,10 +10,11 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
         const res = await axios.get(
           `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
         );
-        if(res){setMainVideo(res.data)}
-      }
-      else{
-          setMainVideo(videoList[0]);
+        if (res) {
+          setMainVideo(res.data);
+        }
+      } else {
+        setMainVideo(videoList[0]);
       }
     } catch (error) {
       console.error(error);
@@ -28,14 +24,10 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
     fetchMainVideo();
   }, [videoId]);
 
-
-
   return (
-    
     <section className="main-video">
       <div className="main-video-container">
         <div className="main-video__wrapper">
-
           <video
             className="main-video__featured"
             alt="The Selected Video"
@@ -44,9 +36,7 @@ function MainVideo({videoId, apiKey, baseUrl, videoList }) {
           ></video>
         </div>
       </div>
-  
     </section>
-    
   );
 }
 

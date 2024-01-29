@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 
 function VideoList({videoId, videoList }) {
   let currentId = videoId;
-  console.log("this is video list", videoList)
   if(!currentId){
-    // currentId = videoList[0].id;
-    console.log("this is video list[0]", videoList[0])
+    currentId = videoList[0].id;
   }
   return (
     <section className="videos">
@@ -16,16 +14,10 @@ function VideoList({videoId, videoList }) {
         </div>
         <ul className="videos__list">
           {videoList && videoList.length > 0 && videoList.map((video) => {
-            // console.log("video Id videolist component: ", currentId);
-            // console.log("video.id videolist component: ", video.id);
             return (
               video.id !== currentId && (
                 <li
                   key={video.id}
-                  // onClick={() => {
-                  //   console.log(video);
-                  //   alterVideo(video.id);
-                  // }}
                 >
                    <Link to={`/${video.id}`}>
 

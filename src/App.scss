@@ -37,14 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-.wrapper {
-  @include mixins.desktop {
-    display: flex;
-  }
-}
-.wrapper__comments {
-  @include mixins.desktop {
-    width: 80%;
-  }
-}
