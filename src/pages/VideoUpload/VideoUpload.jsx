@@ -1,8 +1,15 @@
 import "./VideoUpload.scss";
 import formImg from "../../assets/images/Upload-video-preview.jpg";
 import publishIcon from "../../assets/icons/publish.svg";
+import { useNavigate } from "react-router-dom";
 
 function VideoUpload() {
+  const navigate = useNavigate();
+  const submitHandler = ()=>{
+    alert("submitted successfully")
+    navigate("/");
+  }
+
   return (
     <main>
       <section className="upload-wrapper">
@@ -16,7 +23,7 @@ function VideoUpload() {
 
             <section className="form-upload-wrapper">
               <div className="form-upload-container">
-                <form-upload className="form-upload">
+                <form onSubmit={submitHandler} className="form-upload">
                   <div className="form-upload__content">
                     <div className="form-upload__left">
                       <div className="form-upload__label-wrapper">
@@ -83,7 +90,7 @@ function VideoUpload() {
                       </button>
                     </div>
                   </div>
-                </form-upload>
+                </form>
               </div>
             </section>
           </div>
