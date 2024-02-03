@@ -7,8 +7,9 @@ import axios from "axios";
 import { useParams } from "react-router";
 
 function HomePage() {
-  const baseUrl = "https://project-2-api.herokuapp.com";
-
+  // const baseUrl = "https://project-2-api.herokuapp.com";
+  const baseUrl = "http://localhost:8001"
+// const {baseUrl} = process.env;
   //  a = "84e96018-4022-434e-80bf-000ce4cd12b8"
   //b = "99478bed-6428-49ed-8eaa-f245a5414336"
 
@@ -30,7 +31,11 @@ function HomePage() {
   const [videoList, setVideoList] = useState([]);
   const fetchVideoList = async () => {
     try {
+      if(!apiKey){
+        return <div>loading...</div>
+      }
       const res = await axios.get(`${baseUrl}/videos?api_key=${apiKey}`);
+      console.log("video list: ",res.data)
       setVideoList(res.data);
       setLoading(false);
     } catch (error) {
