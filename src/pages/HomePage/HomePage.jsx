@@ -17,7 +17,8 @@ function HomePage() {
   const fetchApiKey = async () => {
     try {
       const res = await axios.get(`${baseUrl}/register`);
-      setApiKey(res.data);
+      setApiKey(res.data.api_key);
+      console.log("api key: ", res.data.api_key);
     } catch (error) {
       console.error("Error fetching API key: ", error);
     }
@@ -31,9 +32,6 @@ function HomePage() {
   const [videoList, setVideoList] = useState([]);
   const fetchVideoList = async () => {
     try {
-      if(!apiKey){
-        return <div>loading...</div>
-      }
       const res = await axios.get(`${baseUrl}/videos?api_key=${apiKey}`);
       console.log("video list: ",res.data)
       setVideoList(res.data);
@@ -44,8 +42,9 @@ function HomePage() {
   };
 
   useEffect(() => {
+    if (!apiKey) {return;}
     fetchVideoList();
-  }, []);
+  }, [apiKey]);
 
   const { videoId } = useParams();
   return (
