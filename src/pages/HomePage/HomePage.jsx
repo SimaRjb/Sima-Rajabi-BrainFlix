@@ -6,26 +6,27 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 
-function HomePage() {
-  // const baseUrl = "https://project-2-api.herokuapp.com";
-  const baseUrl = "http://localhost:8001"
-// const {baseUrl} = process.env;
-  //  a = "84e96018-4022-434e-80bf-000ce4cd12b8"
-  //b = "99478bed-6428-49ed-8eaa-f245a5414336"
+function HomePage(props) {
 
-  const [apiKey, setApiKey] = useState(null);
-  const fetchApiKey = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/register`);
-      setApiKey(res.data.api_key);
-      console.log("api key: ", res.data.api_key);
-    } catch (error) {
-      console.error("Error fetching API key: ", error);
-    }
-  };
-  useEffect(() => {
-    fetchApiKey();
-  }, []);
+  const apiKey = props.apiKey;
+  // const baseUrl = "https://project-2-api.herokuapp.com";
+  const baseUrl = "http://localhost:8081"
+// const {baseUrl} = process.env;
+
+
+  // const [apiKey, setApiKey] = useState(null);
+  // const fetchApiKey = async () => {
+  //   try {
+  //     const res = await axios.get(`${baseUrl}/register`);
+  //     setApiKey(res.data.api_key);
+  //     console.log("api key: ", res.data.api_key);
+  //   } catch (error) {
+  //     console.error("Error fetching API key: ", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchApiKey();
+  // }, []);
 
   const [loading, setLoading] = useState(true);
 

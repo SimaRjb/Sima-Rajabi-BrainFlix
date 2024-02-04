@@ -41,34 +41,3 @@ function MainVideo({ videoId, apiKey, baseUrl, videoList }) {
 }
 
 export default MainVideo;
-// ParentComponent.jsx
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { MainVideo } from './MainVideo';
-// import { VideoList } from './VideoList';
-
-// const ParentComponent = () => {
-//   const [videoList, setVideoList] = useState([]);
-
-//   useEffect(() => {
-//     const fetchVideoList = async () => {
-//       try {
-//         const response = await axios.get('https://api.example.com/videos');
-//         setVideoList(response.data);
-//       } catch (error) {
-//         console.error('Error fetching video list:', error);
-//       }
-//     };
-
-//     fetchVideoList();
-//   }, []);
-
-//   return (
-//     <div>
-//       <MainVideo videoList={videoList} />
-//       <VideoList videoList={videoList} />
-//     </div>
-//   );
-// };
-
-// export default ParentComponent;

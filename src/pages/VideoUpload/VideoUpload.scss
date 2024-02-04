@@ -168,6 +168,22 @@
       top: 40%;
       transform: translateY(-50%);
     }
+
+    &-publish:disabled{
+      background-color: $disabled-background;
+      color: $disabled-text;
+      cursor: not-allowed; 
+    }
   }
 }
 
+.label-error{
+  color:$red-error;
+  font-weight: $font-weight-regular;
+  font-size: 0.6rem;
+  text-transform: lowercase;
+}
+
+.input-invalid{
+  border: 1px solid $red-error;
+}
