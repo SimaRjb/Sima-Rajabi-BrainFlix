@@ -4,72 +4,74 @@ import avatar from "../../assets/images/Mohan-muruge.jpg";
 import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
 import addCommentIcon from "../../assets/icons/add_comment.svg";
+import deleteCommentIcon from "../../assets/icons/likes.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
+function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
   const [mainVideo, setMainVideo] = useState({});
 
-  const [videoComment , setVideoComment] = useState("");
+  const [videoComment, setVideoComment] = useState("");
   const [isCommentValid, setIsCommentvalid] = useState(false);
   const [isCommentTouched, setIsCommentTouched] = useState(false);
 
   const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [commentUpdateFlag, setCommentUpdateFlag] = useState(0);
 
-  const submitHandler = (event)=>{
+  const submitHandler = (event) => {
     event.preventDefault();
-    if(isCommentValid){
+    if (isCommentValid) {
       postComment();
       setVideoComment("");
       // setIsCommentAdded(true);
       // setCommentUpdateFlag(commentUpdateFlag + 1);
     }
-  }
+  };
 
-  const handleChangeComment = (event) =>{
+  const handleChangeComment = (event) => {
     const value = event.target.value;
     setVideoComment(value);
     setIsCommentvalid(value.length > 5);
     setIsCommentTouched(true);
-  }
+  };
 
-  const postComment= async () => {
+  const postComment = async () => {
     try {
-      console.log(videoComment)
+      console.log(videoComment);
       let defaultVideoId = videoId;
-      if(!defaultVideoId){
+      if (!defaultVideoId) {
         defaultVideoId = videoList[0].id;
       }
-      const res = await axios.post(`${baseUrl}/videos/${defaultVideoId}/comments/?api_key=abc` ,{
-        name: "test user",
-        comment: videoComment
-      });
+      const res = await axios.post(
+        `${baseUrl}/videos/${defaultVideoId}/comments/?api_key=abc`,
+        {
+          name: "test user",
+          comment: videoComment,
+        }
+      );
       // setIsCommentAdded(true);
-      setCommentUpdateFlag(prevFlag => prevFlag + 1)
-      console.log("post response: ",res.data)
+      setCommentUpdateFlag((prevFlag) => prevFlag + 1);
+      console.log("post response: ", res.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-
   const fetchMainVideo = async () => {
     try {
       let response;
-      if(videoId){
-          response = await axios.get(
+      if (videoId) {
+        response = await axios.get(
           `${baseUrl}/videos/${videoId}?api_key=${apiKey}`
         );
-    }
-      else{
+      } else {
         const defaultVideoId = videoList[0].id;
         response = await axios.get(
           `${baseUrl}/videos/${defaultVideoId}?api_key=${apiKey}`
         );
       }
 
-      if(response){
+      if (response) {
         setMainVideo(response.data);
       }
     } catch (error) {
@@ -160,13 +162,21 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
               </div>
               <div className="form__new-comment">
                 <label className="comments__header">
-                  Join the Conversation {isCommentTouched && !isCommentValid && <span className="label-error">  (Must be longer than 5 characters)</span>}
+                  Join the Conversation{" "}
+                  {isCommentTouched && !isCommentValid && (
+                    <span className="label-error">
+                      {" "}
+                      (Must be longer than 5 characters)
+                    </span>
+                  )}
                 </label>
                 <div className="form__right">
                   <div className="form__new-comment-container">
                     <div className="form__section">
                       <textarea
-                        className={`form__field form__comment ${isCommentTouched && !isCommentValid && 'input-invalid'}`}
+                        className={`form__field form__comment ${
+                          isCommentTouched && !isCommentValid && "input-invalid"
+                        }`}
                         id="userComment"
                         name="userComment"
                         placeholder="Add a new comment"
@@ -186,7 +196,11 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
                       src={addCommentIcon}
                       alt="add"
                     />
-                    <button className="form__button" type="submit" disabled={!isCommentValid}>
+                    <button
+                      className="form__button"
+                      type="submit"
+                      disabled={!isCommentValid}
+                    >
                       COMMENT
                     </button>
                   </div>
@@ -196,30 +210,39 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
           </div>
           <section className="comments__display">
             <ul className="comments__list">
-              {comments && comments.map((comment) => {
-                return (
-                  <div key={comment.id}   >
-                    <li className="comment">
-                      <div className="comment__avatar-wrapper">
-                        <div className="comment__avatar"></div>
-                      </div>
-                      <div className="comment__content">
-                        <div className="comment__head">
-                          <p className="comment__author">{comment.name}</p>
-                          <div className="comment__head-right">
-                            <p className="comment__date">
-                              {formatDate(comment.timestamp)}
-                            </p>
+              {comments &&
+                comments.map((comment) => {
+                  return (
+                    <div key={comment.id}>
+                      <li className="comment">
+                        <div className="comment__avatar-wrapper">
+                          <div className="comment__avatar"></div>
+                        </div>
+                        <div className="comment__content">
+                          <div className="comment__head">
+                            <p className="comment__author">{comment.name}</p>
+                            <div className="comment__head-right">
+                              <p className="comment__date">
+                                <span>{formatDate(comment.timestamp)}</span>
+                                
+                                <span>
+                                  <img
+                                    className="form__button-icon"
+                                    src={deleteCommentIcon}
+                                    alt="add"
+                                  />
+                                </span>
+                              </p>
+                            </div>
+                          </div>
+                          <div className="comment__text">
+                            <p className="comment__par">{comment.comment}</p>
                           </div>
                         </div>
-                        <div className="comment__text">
-                          <p className="comment__par">{comment.comment}</p>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
-                );
-              })}
+                      </li>
+                    </div>
+                  );
+                })}
             </ul>
           </section>
         </div>
