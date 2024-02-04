@@ -162,6 +162,7 @@
     }
   }
   &__button {
+    
     &-wrapper {
       display: flex;
       justify-content: flex-end;
@@ -173,6 +174,9 @@
       left: 10px;
       top: 35%;
       transform: translateY(-50%);
+    }
+    &:disabled{
+      cursor: not-allowed;
     }
   }
 }
@@ -214,4 +218,11 @@
     border-top: 1px solid $mercury;
     width: 100%;
   }
+}
+
+.label-error{
+  @include set-label-error;
+}
+.input-invalid{
+  @include set-input-invalid;
 }

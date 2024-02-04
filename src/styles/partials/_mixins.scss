@@ -31,3 +31,14 @@
 @mixin set-font-family{
   font-family: "AvenirNextLTPro", "Nunito";
 }
+
+@mixin set-label-error{
+  color:$red-error;
+  font-weight: $font-weight-regular;
+  font-size: 0.6rem;
+  text-transform: lowercase;
+}
+
+@mixin set-input-invalid{
+  border: 1px solid $red-error;
+}

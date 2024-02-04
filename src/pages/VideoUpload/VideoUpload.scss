@@ -178,12 +178,9 @@
 }
 
 .label-error{
-  color:$red-error;
-  font-weight: $font-weight-regular;
-  font-size: 0.6rem;
-  text-transform: lowercase;
+  @include set-label-error;
 }
 
 .input-invalid{
-  border: 1px solid $red-error;
+  @include set-input-invalid;
 }

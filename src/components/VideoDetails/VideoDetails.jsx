@@ -10,6 +10,50 @@ import axios from "axios";
 function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
   const [mainVideo, setMainVideo] = useState({});
 
+  const [videoComment , setVideoComment] = useState("");
+  const [isCommentValid, setIsCommentvalid] = useState(false);
+  const [isCommentTouched, setIsCommentTouched] = useState(false);
+
+  const [isCommentAdded, setIsCommentAdded] = useState(false);
+  const [commentUpdateFlag, setCommentUpdateFlag] = useState(0);
+
+  const submitHandler = (event)=>{
+    event.preventDefault();
+    if(isCommentValid){
+      postComment();
+      setVideoComment("");
+      // setIsCommentAdded(true);
+      // setCommentUpdateFlag(commentUpdateFlag + 1);
+    }
+  }
+
+  const handleChangeComment = (event) =>{
+    const value = event.target.value;
+    setVideoComment(value);
+    setIsCommentvalid(value.length > 5);
+    setIsCommentTouched(true);
+  }
+
+  const postComment= async () => {
+    try {
+      console.log(videoComment)
+      let defaultVideoId = videoId;
+      if(!defaultVideoId){
+        defaultVideoId = videoList[0].id;
+      }
+      const res = await axios.post(`${baseUrl}/videos/${defaultVideoId}/comments/?api_key=abc` ,{
+        name: "test user",
+        comment: videoComment
+      });
+      // setIsCommentAdded(true);
+      setCommentUpdateFlag(prevFlag => prevFlag + 1)
+      console.log("post response: ",res.data)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   const fetchMainVideo = async () => {
     try {
       let response;
@@ -34,7 +78,7 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
   };
   useEffect(() => {
     fetchMainVideo();
-  }, [videoId]);
+  }, [videoId, commentUpdateFlag]);
 
   const {
     id,
@@ -106,7 +150,7 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
             <h3 className="comments__count">{comments.length} Comments</h3>
           )}
           <div className="form__wrapper">
-            <form className="form" id="comment-form">
+            <form onSubmit={submitHandler} className="form" id="comment-form">
               <div className="form__avatar">
                 <img
                   className="form__avatar-img"
@@ -116,13 +160,13 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
               </div>
               <div className="form__new-comment">
                 <label className="comments__header">
-                  Join the Conversation
+                  Join the Conversation {isCommentTouched && !isCommentValid && <span className="label-error">  (Must be longer than 5 characters)</span>}
                 </label>
                 <div className="form__right">
                   <div className="form__new-comment-container">
                     <div className="form__section">
                       <textarea
-                        className="form__field form__comment"
+                        className={`form__field form__comment ${isCommentTouched && !isCommentValid && 'input-invalid'}`}
                         id="userComment"
                         name="userComment"
                         placeholder="Add a new comment"
@@ -131,6 +175,8 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
                         minLength="1"
                         maxLength="300"
                         required
+                        onChange={handleChangeComment}
+                        value={videoComment}
                       ></textarea>
                     </div>
                   </div>
@@ -140,7 +186,7 @@ function VideoDetails({videoId, apiKey, baseUrl, videoList }) {
                       src={addCommentIcon}
                       alt="add"
                     />
-                    <button className="form__button" type="submit">
+                    <button className="form__button" type="submit" disabled={!isCommentValid}>
                       COMMENT
                     </button>
                   </div>
