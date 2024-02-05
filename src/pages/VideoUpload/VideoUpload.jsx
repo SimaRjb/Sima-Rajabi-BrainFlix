@@ -1,15 +1,13 @@
 import "./VideoUpload.scss";
 import formImg from "../../assets/images/Upload-video-preview.jpg";
 import publishIcon from "../../assets/icons/publish.svg";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 function VideoUpload(props) {
   const apiKey = props.apiKey;
+  const {REACT_APP_API_BASE_PATH} = process.env;
 
-  const baseUrl = "http://localhost:8081";
-  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -19,33 +17,26 @@ function VideoUpload(props) {
   const [isTitleTouched, setIsTitleTouched] = useState(false);
   const [isDescriptionTouched, setIsDescriptionTouched] = useState(false);
 
-  // const [isFormValid, setIsFormValid] = useState(false);
-
-  // const validateTitle = () => {
-  //   setIsTitleValid(title.length >= 5); // Update title validity based on length
-  // };
-
   const handleChangeTitle = (event) => {
     const value = event.target.value;
     setTitle(value);
-    setIsTitleValid(value.length > 4); // Check if title length is longer than 4 characters
+    setIsTitleValid(value.length > 4); 
     setIsTitleTouched(true);
   };
 
   const handleDescriptionChange = (event) => {
     const value = event.target.value;
     setDescription(value);
-    setIsDescriptionValid(value.length > 10); // Check if description length is longer than 10 characters
+    setIsDescriptionValid(value.length > 10); 
     setIsDescriptionTouched(true);
   };
 
   const postVideo = async () => {
     try {
-      const res = await axios.post(`${baseUrl}/videos?api_key=abc`, {
+      const res = await axios.post(`${REACT_APP_API_BASE_PATH}/videos?api_key=${apiKey}`, {
         title: title,
         description: description,
       });
-      console.log("post response: ", res.data);
     } catch (error) {
       console.error(error);
     }
@@ -57,6 +48,14 @@ function VideoUpload(props) {
       postVideo();
       setTitle("");
       setDescription("");
+      
+      setIsTitleValid(false);
+      setIsTitleTouched(false);
+
+      setIsDescriptionValid(false);
+      setIsDescriptionTouched(false);
+
+      alert("The video is submitted successfully")
     }
   };
 

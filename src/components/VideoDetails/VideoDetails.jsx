@@ -16,7 +16,6 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
   const [isCommentValid, setIsCommentvalid] = useState(false);
   const [isCommentTouched, setIsCommentTouched] = useState(false);
 
-  const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [commentUpdateFlag, setCommentUpdateFlag] = useState(0);
 
   const [likeActionStatus, setLikeActionStatus] =useState(true)

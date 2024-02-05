@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import VideoUpload from "./pages/VideoUpload/VideoUpload";
 
 function App() {
-  let baseUrl = "http://localhost:8081"
+
 const {REACT_APP_API_BASE_PATH} = process.env;
 
   const [apiKey, setApiKey] = useState(null);
