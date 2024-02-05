@@ -4,9 +4,10 @@ import avatar from "../../assets/images/Mohan-muruge.jpg";
 import viewsIcon from "../../assets/icons/views.svg";
 import likesIcon from "../../assets/icons/likes.svg";
 import addCommentIcon from "../../assets/icons/add_comment.svg";
-import deleteCommentIcon from "../../assets/icons/likes.svg";
+import deleteCommentIcon from "../../assets/icons/del.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
   const [mainVideo, setMainVideo] = useState({});
@@ -18,13 +19,30 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
   const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [commentUpdateFlag, setCommentUpdateFlag] = useState(0);
 
+  const handleDeleteComment = (commentId) =>{
+    deleteComment(commentId);
+  }
+
+  const deleteComment = async(commentId)=>{
+    try {
+      let defaultVideoId = videoId;
+    if (!defaultVideoId) {
+      defaultVideoId = videoList[0].id;
+    }
+    const res = await axios.delete(
+      `${baseUrl}/videos/${defaultVideoId}/comments/${commentId}?api_key=abc`,
+    );
+    setCommentUpdateFlag((prevFlag) => prevFlag + 1);
+    } catch (error) {
+      console.error(error);
+    }
+    
+  }
   const submitHandler = (event) => {
     event.preventDefault();
     if (isCommentValid) {
       postComment();
       setVideoComment("");
-      // setIsCommentAdded(true);
-      // setCommentUpdateFlag(commentUpdateFlag + 1);
     }
   };
 
@@ -37,7 +55,6 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
 
   const postComment = async () => {
     try {
-      console.log(videoComment);
       let defaultVideoId = videoId;
       if (!defaultVideoId) {
         defaultVideoId = videoList[0].id;
@@ -49,9 +66,7 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
           comment: videoComment,
         }
       );
-      // setIsCommentAdded(true);
       setCommentUpdateFlag((prevFlag) => prevFlag + 1);
-      console.log("post response: ", res.data);
     } catch (error) {
       console.error(error);
     }
@@ -223,15 +238,16 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
                             <p className="comment__author">{comment.name}</p>
                             <div className="comment__head-right">
                               <p className="comment__date">
-                                <span>{formatDate(comment.timestamp)}</span>
-                                
-                                <span>
+                                <div>{formatDate(comment.timestamp)}</div>                                                    
+                                <div>
+                                  <Link to="#" onClick={() => handleDeleteComment(comment.id)}>
                                   <img
-                                    className="form__button-icon"
+                                    className="comment__delete-icon"
                                     src={deleteCommentIcon}
                                     alt="add"
                                   />
-                                </span>
+                                  </Link>
+                                </div>
                               </p>
                             </div>
                           </div>
