@@ -10,8 +10,9 @@ function HomePage(props) {
 
   const apiKey = props.apiKey;
   // const baseUrl = "https://project-2-api.herokuapp.com";
-  const baseUrl = "http://localhost:8081"
-// const {baseUrl} = process.env;
+  let baseUrl = "http://localhost:8081"
+const {REACT_APP_API_BASE_PATH} = process.env;
+// baseUrl = REACT_APP_API_BASE_PATH;
 
 
   // const [apiKey, setApiKey] = useState(null);
@@ -33,7 +34,7 @@ function HomePage(props) {
   const [videoList, setVideoList] = useState([]);
   const fetchVideoList = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/videos?api_key=${apiKey}`);
+      const res = await axios.get(`${REACT_APP_API_BASE_PATH}/videos?api_key=${apiKey}`);
       console.log("video list: ",res.data)
       setVideoList(res.data);
       setLoading(false);
@@ -53,14 +54,14 @@ function HomePage(props) {
     <main>
       {!loading && videoList && videoList.length > 0 && (
         <>
-      <MainVideo videoId={videoId} apiKey={apiKey} baseUrl={baseUrl} videoList={videoList} />
+      <MainVideo videoId={videoId} apiKey={apiKey} baseUrl={REACT_APP_API_BASE_PATH} videoList={videoList} />
       
       <div className="wrapper">
         <div className="wrapper__comments">
         <VideoDetails
           videoId={videoId}
             apiKey={apiKey}
-            baseUrl={baseUrl}
+            baseUrl={REACT_APP_API_BASE_PATH}
             videoList={videoList}
           />
         </div>

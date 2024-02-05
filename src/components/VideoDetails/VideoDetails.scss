@@ -64,6 +64,13 @@
   &__likes {
     color: $silver;
   }
+
+  &__icon-liked{
+    filter: brightness(0.7);
+  }
+  &__icon-not-liked{
+    filter: brightness(1);
+  }
 }
 
 //main video description

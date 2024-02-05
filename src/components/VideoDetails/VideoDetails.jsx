@@ -19,25 +19,48 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
   const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [commentUpdateFlag, setCommentUpdateFlag] = useState(0);
 
-  const handleDeleteComment = (commentId) =>{
-    deleteComment(commentId);
-  }
+  const [likeActionStatus, setLikeActionStatus] =useState(true)
 
-  const deleteComment = async(commentId)=>{
+  const handleLikes = () => {
+    modifyLikes();
+  };
+
+  const modifyLikes = async () => {
     try {
+      let res;
       let defaultVideoId = videoId;
-    if (!defaultVideoId) {
-      defaultVideoId = videoList[0].id;
-    }
-    const res = await axios.delete(
-      `${baseUrl}/videos/${defaultVideoId}/comments/${commentId}?api_key=abc`,
-    );
-    setCommentUpdateFlag((prevFlag) => prevFlag + 1);
+      if (!defaultVideoId) {
+        defaultVideoId = videoList[0].id;
+      }
+      res = await axios.put(
+        `${baseUrl}/videos/${defaultVideoId}/likes?api_key=abc`, { likeAction: likeActionStatus ? "add" : "remove" }
+      );
+      setLikeActionStatus((prevStatus) => !prevStatus);
+      console.log("likes: ", res.data);
+      setCommentUpdateFlag((prevFlag) => prevFlag + 1);
     } catch (error) {
       console.error(error);
     }
-    
-  }
+  };
+
+  const handleDeleteComment = (commentId) => {
+    deleteComment(commentId);
+  };
+
+  const deleteComment = async (commentId) => {
+    try {
+      let defaultVideoId = videoId;
+      if (!defaultVideoId) {
+        defaultVideoId = videoList[0].id;
+      }
+      const res = await axios.delete(
+        `${baseUrl}/videos/${defaultVideoId}/comments/${commentId}?api_key=abc`
+      );
+      setCommentUpdateFlag((prevFlag) => prevFlag + 1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     if (isCommentValid) {
@@ -142,9 +165,14 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
                 </div>
 
                 <div className="info__details-content info__likes-wrapper">
-                  <div className="info__icon-wrapper info__likes-icon">
-                    <img className="info__icon" src={likesIcon} alt="likes" />
-                  </div>
+                  <Link to="#" className="info__icon-wrapper info__likes-icon">
+                    <img
+                      className={`info__icon ${!likeActionStatus ? "info__icon-liked" :"info__icon-not-liked"}`}
+                      src={likesIcon}
+                      alt="likes"
+                      onClick={handleLikes}
+                    />
+                  </Link>
                   <div className="info__details-txt info__likes-txt">
                     <p className="info__likes">{likes}</p>
                   </div>
@@ -238,14 +266,19 @@ function VideoDetails({ videoId, apiKey, baseUrl, videoList }) {
                             <p className="comment__author">{comment.name}</p>
                             <div className="comment__head-right">
                               <p className="comment__date">
-                                <div>{formatDate(comment.timestamp)}</div>                                                    
+                                <div>{formatDate(comment.timestamp)}</div>
                                 <div>
-                                  <Link to="#" onClick={() => handleDeleteComment(comment.id)}>
-                                  <img
-                                    className="comment__delete-icon"
-                                    src={deleteCommentIcon}
-                                    alt="add"
-                                  />
+                                  <Link
+                                    to="#"
+                                    onClick={() =>
+                                      handleDeleteComment(comment.id)
+                                    }
+                                  >
+                                    <img
+                                      className="comment__delete-icon"
+                                      src={deleteCommentIcon}
+                                      alt="add"
+                                    />
                                   </Link>
                                 </div>
                               </p>

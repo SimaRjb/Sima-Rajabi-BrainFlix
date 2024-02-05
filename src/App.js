@@ -8,14 +8,13 @@ import HomePage from "./pages/HomePage/HomePage";
 import VideoUpload from "./pages/VideoUpload/VideoUpload";
 
 function App() {
-  const baseUrl = "http://localhost:8081"
-// const {baseUrl} = process.env;
-
+  let baseUrl = "http://localhost:8081"
+const {REACT_APP_API_BASE_PATH} = process.env;
 
   const [apiKey, setApiKey] = useState(null);
   const fetchApiKey = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/register`);
+      const res = await axios.get(`${REACT_APP_API_BASE_PATH}/register`);
       setApiKey(res.data.api_key);
     } catch (error) {
       console.error("Error fetching API key: ", error);
