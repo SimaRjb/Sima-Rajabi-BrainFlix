@@ -13,6 +13,12 @@ My goal was to develop a full-stack single-page application from scratch using R
 - Utilized Flexbox, SAAS, and adopted a mobile-first design approach for responsive layouts.
 - Leveraged Axios for streamlined API calls and data management.
 
+## **Demo**
+
+
+https://github.com/SimaRjb/Sima-Rajabi-BrainFlix/assets/127899172/9ff85417-6418-4858-bab3-2256ea2b5fe4
+
+
 ## **Installation**
 ### **Clone**
 - Clone this repo to your local machine using [https://github.com/SimaRjb/Sima-Rajabi-BrainFlix.git](https://github.com/SimaRjb/Sima-Rajabi-BrainFlix.git)
